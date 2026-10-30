@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAYROX | Oyun Dünyası</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #080808;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+header {
+    padding: 25px;
+    background: #111;
+    border-bottom: 2px solid #9333ea;
+}
+
+.logo {
+    font-size: 45px;
+    font-weight: 1000;
+    color: white;
+    text-shadow: 0 0 20px #a855f7;
+    cursor: pointer;
+}
+
+.ana {
+    padding: 35px 15px;
+}
+
+h1 {
+    font-size: 55px;
+    text-shadow: 0 0 20px #9333ea;
+}
+
+.ip {
+    font-size: 20px;
+    margin: 25px;
+}
+
+/* SMP KUTUSU */
+
+.smp-kutu {
+    width: 90%;
+    max-width: 900px;
+    height: 400px;
+    margin: 30px auto;
+    border: 3px solid #9333ea;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    background-image:
+        linear-gradient(#0005, #0009),
+        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200");
+
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 0 0 30px #9333ea;
+    transition: 0.3s;
+}
+
+.smp-kutu:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 50px #a855f7;
+}
+
+.smp-yazi {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    font-size: 110px;
+    font-weight: 1000;
+    color: white;
+    letter-spacing: 12px;
+
+    text-shadow:
+        1px 1px 0 #a855f7,
+        2px 2px 0 #9333ea,
+        3px 3px 0 #7e22ce,
+        4px 4px 0 #6b21a8,
+        0 0 20px #a855f7,
+        0 0 40px #9333ea;
+
+    transform: perspective(500px) rotateX(8deg);
+}
+
+.smp-alt {
+    position: absolute;
+    bottom: 35px;
+    width: 100%;
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #9333ea;
+}
+
+/* MARKET */
+
+#market {
+    display: none;
+    padding: 30px 15px;
+}
+
+.urun {
+    background: #151515;
+    border: 2px solid #9333ea;
+    border-radius: 15px;
+    padding: 25px;
+    width: 250px;
+    margin: 20px auto;
+    box-shadow: 0 0 15px #9333ea;
+}
+
+.urun h2 {
+    color: white;
+}
+
+.fiyat {
+    font-size: 25px;
+    color: #c084fc;
+    font-weight: bold;
+}
+
+button {
+    background: #9333ea;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #a855f7;
+    box-shadow: 0 0 15px #a855f7;
+}
+
+.geri {
+    margin: 20px;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 38px;
+    }
+
+    .smp-kutu {
+        height: 250px;
+    }
+
+    .smp-yazi {
+        font-size: 65px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo" onclick="goHome()">ZAYROX</div>
+</header>
+
+<!-- ANA SAYFA -->
+
+<div id="anasayfa" class="ana">
+
+    <h1>ZAYROX</h1>
+
+    <p>Yeni nesil oyun dünyasına hoş geldin!</p>
+
+    <div class="ip">
+        Sunucu IP: <b>ZayroxSmp.aternos.me</b>
+    </div>
+
+    <div class="smp-kutu" onclick="openMarket()">
+        <div class="smp-yazi">SMP</div>
+
+        <div class="smp-alt">
+            Marketi görmek için tıkla!
+        </div>
+    </div>
+
+</div>
+
+<!-- MARKET SAYFASI -->
+
+<div id="market">
+
+    <h1>ZAYROX MARKET</h1>
+
+    <div class="urun">
+        <h2>ELDER</h2>
+        <div class="fiyat">75 TL</div>
+        <button onclick="buy('ELDER', 75)">Satın Al</button>
+    </div>
+
+    <div class="urun">
+        <h2>VIP</h2>
+        <div class="fiyat">150 TL</div>
+        <button onclick="buy('VIP', 150)">Satın Al</button>
+    </div>
+
+    <div class="urun">
+        <h2>VIP+</h2>
+        <div class="fiyat">300 TL</div>
+        <button onclick="buy('VIP+', 300)">Satın Al</button>
+    </div>
+
+    <div class="urun">
+        <h2>ZAYROX VIP</h2>
+        <div class="fiyat">800 TL</div>
+        <button onclick="buy('ZAYROX VIP', 800)">Satın Al</button>
+    </div>
+
+    <button class="geri" onclick="goHome()">
+        ← Ana Sayfaya Dön
+    </button>
+
+</div>
+
+<script>
+
+function openMarket() {
+    document.getElementById("anasayfa").style.display = "none";
+    document.getElementById("market").style.display = "block";
+}
+
+function goHome() {
+    document.getElementById("market").style.display = "none";
+    document.getElementById("anasayfa").style.display = "block";
+}
+
+function buy(name, price) {
+    alert(name + " ürünü " + price + " TL. Satın alma sistemi henüz aktif değil!");
+}
+
+</script>
+
+</body>
+</html>
